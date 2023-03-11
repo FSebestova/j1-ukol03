@@ -11,6 +11,7 @@ public class Pocitac {
     private Procesor cpu;
     private Pamet ram;
     private Disk pevnyDisk;
+    private Disk vyuziteMisto;
 
 
     public void setJeZapnuty(boolean jeZapnuty) {
@@ -68,7 +69,6 @@ public class Pocitac {
             }
         }
 
-
     public void vypniSe(){
         if (jeZapnuty == true) {
             System.out.println("Počítač se vypíná");
@@ -79,6 +79,33 @@ public class Pocitac {
             System.err.println("nemůžeš vypnout vypnutý počítač");
             return;
         }
+    }
+
+    public void vytvorSouborOVelikosti(long velikost) {
+        if (jeZapnuty) {
+            if ((this.pevnyDisk.getVyuziteMisto() + velikost) > this.pevnyDisk.getKapacita()){
+            System.err.println("Soubor je větší než kapacita disku");
+        }
+        else {
+                this.pevnyDisk.setVyuziteMisto(this.pevnyDisk.getVyuziteMisto() + velikost);
+                System.out.println("Soubor je vytvořen");
+            }
+
+        }
+
+    }
+    public void vymazSouborOVelikosti(long velikost){
+        if (jeZapnuty){
+            this.pevnyDisk.setVyuziteMisto(this.pevnyDisk.getVyuziteMisto() - velikost);
+        if ((this.pevnyDisk.getVyuziteMisto() - velikost) <= 0){
+            System.err.println("Tato operace není možná"+ " " + this.pevnyDisk.getVyuziteMisto());
+           }
+           else {
+               this.pevnyDisk.setVyuziteMisto(this.pevnyDisk.getVyuziteMisto() - velikost);
+               System.out.println("Soubor je vymazán" + " " + this.pevnyDisk.getVyuziteMisto());
+           }
+        }
+
     }
 
     @Override
