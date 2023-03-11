@@ -14,6 +14,7 @@ public class HlavniProgram {
 //        frantiskyPocitac.zapniSe();
 //        frantiskyPocitac.vypniSe();
 //        frantiskyPocitac.vypniSe();
+
         System.out.println(frantiskyPocitac.toString());
 
         Procesor frantiskyProcesor = new Procesor();
